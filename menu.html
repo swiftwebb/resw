@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Menu - Elysian Table</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          "primary": "#2563eb",
+          "secondary": "#1e40af",
+        },
+        fontFamily: {
+          "display": ["Manrope", "sans-serif"]
+        },
+      },
+    },
+  }
+</script>
+<style>
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  }
+
+  .gradient-blue-text {
+    background: linear-gradient(135deg, #60a5fa 0%, #2563eb 50%, #1e40af 100%);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 3s ease-in-out infinite;
+  }
+
+  @keyframes shimmer {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  .menu-card {
+    transition: all 0.3s ease;
+  }
+
+  .menu-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(37, 99, 235, 0.15);
+  }
+
+  .category-btn {
+    transition: all 0.3s ease;
+  }
+
+  .category-btn:hover {
+    transform: translateY(-2px);
+  }
+
+  .hero-gradient {
+    background: linear-gradient(135deg, #dbeafe 0%, #eff6ff 50%, #ffffff 100%);
+  }
+
+  .menu-image {
+    transition: transform 0.3s ease;
+  }
+
+  .menu-card:hover .menu-image {
+    transform: scale(1.1);
+  }
+</style>
+</head>
+<body class="bg-white font-display text-gray-900">
+  <div class="relative flex min-h-screen w-full flex-col">
+    
+    <!-- Header -->
+    <header class="bg-white border-b border-blue-100 px-6 sm:px-10 md:px-20 lg:px-40 py-4 sticky top-0 z-50 backdrop-blur-sm bg-white/95">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-4">
+          <div class="h-6 w-6 text-blue-600">
+            <svg fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M21.71 8.71c1.25-1.25.68-3.71-1.29-4.29-1.33-.39-2.55.3-3.42 1.17l-2.42 2.42-2.83-2.83c-.39-.39-1.02-.39-1.41 0l-1.17 1.17-2.58-2.58c-.99-.99-2.61-.99-3.61 0L1 5.41c-.99.99-.99 2.61 0 3.61l2.58 2.58-1.17 1.17c-.39.39-.39 1.02 0 1.41l2.83 2.83-2.42 2.42c-.87.87-1.56 2.09-1.17 3.42.58 1.97 3.04 2.54 4.29 1.29l10.59-10.59c1.25-1.24 1.25-3.27 0-4.52zM12 15c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3z"></path>
+            </svg>
+          </div>
+          <h2 class="text-blue-900 text-xl font-bold leading-tight tracking-[-0.015em]">Elysian Table</h2>
+        </div>
+
+        <div class="flex flex-1 justify-end items-center gap-6">
+          <nav class="hidden md:flex items-center gap-8">
+            <a class="text-blue-900 text-sm font-medium hover:text-blue-600 transition-colors" href="index.html">Home</a>
+            <a class="text-blue-600 text-sm font-bold border-b-2 border-blue-600" href="menu.html">Menu</a>
+            <a class="text-blue-900 text-sm font-medium hover:text-blue-600 transition-colors" href="res.html">Book</a>
+          </nav>
+
+          <button id="menu-btn" class="flex items-center justify-center p-2 md:hidden text-blue-900">
+            <span class="material-symbols-outlined text-3xl">menu</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-blue-100 px-6 py-4 space-y-3">
+      <a href="index.html" class="block text-sm font-medium text-blue-700 hover:text-blue-600">Home</a>
+      <a href="menu.html" class="block text-sm font-bold text-blue-600">Menu</a>
+      <a href="res.html" class="block text-sm font-medium text-blue-900 hover:text-blue-600">Book</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient py-16 px-6 sm:px-10">
+      <div class="max-w-6xl mx-auto text-center">
+        <h1 class="text-5xl md:text-6xl font-black text-blue-900 mb-4">Our Menu</h1>
+        <p class="text-lg text-blue-700 max-w-2xl mx-auto">A curated selection of the finest dishes, prepared with passion and precision.</p>
+      </div>
+    </section>
+
+    <!-- Category Navigation -->
+    <div class="sticky top-[73px] z-40 bg-white/95 backdrop-blur-sm border-b border-blue-100 py-4 px-6 sm:px-10">
+      <div class="max-w-6xl mx-auto">
+        <div class="flex gap-3 overflow-x-auto pb-2 scrollbar-hide">
+          <button class="category-btn bg-blue-600 text-white px-6 py-2 rounded-full text-sm font-bold whitespace-nowrap shadow-lg shadow-blue-500/30">
+            Appetizers
+          </button>
+          <button class="category-btn bg-blue-100 text-blue-700 px-6 py-2 rounded-full text-sm font-semibold whitespace-nowrap hover:bg-blue-200">
+            Main Courses
+          </button>
+          <button class="category-btn bg-blue-100 text-blue-700 px-6 py-2 rounded-full text-sm font-semibold whitespace-nowrap hover:bg-blue-200">
+            Desserts
+          </button>
+          <button class="category-btn bg-blue-100 text-blue-700 px-6 py-2 rounded-full text-sm font-semibold whitespace-nowrap hover:bg-blue-200">
+            Cocktails
+          </button>
+          <button class="category-btn bg-blue-100 text-blue-700 px-6 py-2 rounded-full text-sm font-semibold whitespace-nowrap hover:bg-blue-200">
+            Mocktails
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="py-12 px-6 sm:px-10 bg-gradient-to-b from-white to-blue-50/30">
+      <div class="max-w-6xl mx-auto space-y-16">
+        
+        <!-- Appetizers Section -->
+        <section id="appetizers">
+          <h2 class="text-3xl font-bold text-blue-900 mb-8 pb-3 border-b-2 border-blue-200">Appetizers</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            
+            <div class="menu-card bg-white rounded-xl shadow-md overflow-hidden border border-blue-100 p-6">
+              <div class="flex items-start gap-4">
+                <div class="overflow-hidden rounded-lg w-24 h-24 flex-shrink-0 bg-blue-100">
+                  <img class="menu-image w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5BPlHHkKbqVgYXOrALi4A7bsKXLX61QzKn4BgrNI5CBQxmM_7-KqpB-CWkhyvNBw01AiY_6U2El_ghTklvsUsWyNXE2LcNPH7eJyuZA_puZ9kLgVYtaHwn-CiWxvcdxQzfDep8LQ4CMlObmolMamu2c1oQlwmrquOQkBCW_EYaBea7MhPeFwG9J0NMqgsU2aqjh8TeV8_Ul8I1amY4j6iPh-BOTdLmE_-Zr-xjJJZWV6QaB3yRDzov2oWIUDncF6OURVBiyhL6LhY" alt="Seared Scallops"/>
+                </div>
+                <div class="flex-1">
+                  <div class="flex items-start justify-between mb-2">
+                    <h3 class="text-lg font-bold text-blue-900">Seared Scallops with Saffron Risotto</h3>
+                    <span class="text-xl font-bold text-blue-600 ml-4">$28</span>
+                  </div>
+                  <p class="text-sm text-gray-600 leading-relaxed">Fresh sea scallops pan-seared to perfection, served on a creamy bed of saffron-infused Arborio rice.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="menu-card bg-white rounded-xl shadow-md overflow-hidden border border-blue-100 p-6">
+              <div class="flex items-start gap-4">
+                <div class="overflow-hidden rounded-lg w-24 h-24 flex-shrink-0 bg-blue-100">
+                  <img class="menu-image w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrtYyUR6bGMrG6_PymEe3Emn2rimxTtbjTZtjmaEoj_T-hP86HqI6ODv8vLVS1wmJznVgbu3afz4fmy8-TXSFzmJtGKRNuaqC5MZK5SEvQ_MYoFP_nJwHpDFVPFqEi6yVyQHZ-gIFUjkrwCYa0-LT37ZI12YWswJ8vSGyUzKyWM-Jnh9HtXQ1LXJB4TJYvpEQQiH8SK99H7Pbc7szCocgs-TBeGL1kWx4kiv4c_VEXQeLYtkiTpYra2p9hj_Xrs76MWwhanIv2xws2" alt="Burrata"/>
+                </div>
+                <div class="flex-1">
+                  <div class="flex items-start justify-between mb-2">
+                    <h3 class="text-lg font-bold text-blue-900">Burrata with Heirloom Tomatoes</h3>
+                    <span class="text-xl font-bold text-blue-600 ml-4">$22</span>
+                  </div>
+                  <p class="text-sm text-gray-600 leading-relaxed">Creamy burrata, ripe heirloom tomatoes, basil, and a drizzle of aged balsamic glaze.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="menu-card bg-white rounded-xl shadow-md overflow-hidden border border-blue-100 p-6">
+              <div class="flex items-start gap-4">
+                <div class="overflow-hidden rounded-lg w-24 h-24 flex-shrink-0 bg-blue-100">
+                  <img class="menu-image w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJDgnijRnZ1xj6PNwSngiw7QUpc-_GU2PUgKaFfHBi0mRkExDxQRB9DvtRIkiUERWsT3Zdk8XRz2F5zYVsUEU4PtPAyfPEyGGCeH2BaWpKPmyaucCwDXQB-X0_7vPXONhTXP8iiwZb4vyodmH248N8OEvDq3-8dOt3Ufugg8228fYDqjI3d9rpiV4FoqbnmpDWbnM5XT422WM0yRQuUblcaW3_8xF4ddrQsecp5U_0tAZ6y7A7IKKItbTwhH6edoJweNqKE8L4n3Q1" alt="Foie Gras"/>
+                </div>
+                <div class="flex-1">
+                  <div class="flex items-start justify-between mb-2">
+                    <h3 class="text-lg font-bold text-blue-900">Foie Gras Torchon</h3>
+                    <span class="text-xl font-bold text-blue-600 ml-4">$35</span>
+                  </div>
+                  <p class="text-sm text-gray-600 leading-relaxed">Delicate foie gras served with fig jam, toasted brioche, and a sprinkle of sea salt.</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- Main Courses Section -->
+        <section id="main-courses">
+          <h2 class="text-3xl font-bold text-blue-900 mb-8 pb-3 border-b-2 border-blue-200">Main Courses</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            
+            <!-- Chef's Special -->
+            <div class="menu-card bg-gradient-to-br from-blue-50 to-white rounded-xl shadow-lg overflow-hidden border-2 border-blue-300 p-6 relative">
+              <div class="absolute top-4 right-4 flex items-center gap-2 bg-blue-600 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg">
+                <span class="material-symbols-outlined text-sm">star</span>
+                <span>Chef's Special</span>
+              </div>
+              <div class="flex items-start gap-4">
+                <div class="overflow-hidden rounded-lg w-24 h-24 flex-shrink-0 bg-blue-100">
+                  <img class="menu-image w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAztXTGHAaNaIS-34nshxAe_eXOiCeAwQAoEP8u9MbZQrMeZp6SXHgAHZE_8dsPmyhlvNmzahKjGQzilkOUwu0J8oWivuindDcjRALZalrhLNp7Eyqd0a29dKpAssDpM5zptyIB07iw4YjsKjVmo_LwtTjqwWtXuQQASlU-dXtiSVgs4GsIGYolXh2oTBnqQ9RxT9trn2_MZ01DiFkdb4TD6RYgTOeng41sjfPccZcZQ9c-gsc9p1CPpyWQnpvZ-uXtxDfOnN3Bcjlx" alt="Wagyu Beef"/>
+                </div>
+                <div class="flex-1">
+                  <div class="flex items-start justify-between mb-2">
+                    <h3 class="text-lg font-bold text-blue-900 pr-20">Wagyu Beef Filet</h3>
+                    <span class="text-xl font-bold text-blue-600 ml-4">$95</span>
+                  </div>
+                  <p class="text-sm text-gray-600 leading-relaxed">8oz A5 Wagyu filet, potato purée, asparagus, and a red wine reduction sauce.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="menu-card bg-white rounded-xl shadow-md overflow-hidden border border-blue-100 p-6">
+              <div class="flex items-start gap-4">
+                <div class="overflow-hidden rounded-lg w-24 h-24 flex-shrink-0 bg-blue-100">
+                  <img class="menu-image w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYBaUGTu-ocEM5G1kOYYxXvRlCg77I1ReDFCzDpJ1jvGsLLPJmsONNkbmWxBQ3RihgNZt8Jqpagogy58lQGEBcg5JVHGQPhbF4gikIo1ZFF6wY066Wi1EnmtFcNvjOWLJpyOrG8a19Wp6tAUB3X5_CfoDlx35juyMBuwDJSYJF4KNRtr_avClVZ1RrMRy3OTofKhk049F0lmY46RWVHumCfPJU0NVDc1oaVN-oXsWzCc5RmoopuyKF1w2ttemB_jFYwc90aua8xhPM" alt="Duck Breast"/>
+                </div>
+                <div class="flex-1">
+                  <div class="flex items-start justify-between mb-2">
+                    <h3 class="text-lg font-bold text-blue-900">Pan-Seared Duck Breast</h3>
+                    <span class="text-xl font-bold text-blue-600 ml-4">$48</span>
+                  </div>
+                  <p class="text-sm text-gray-600 leading-relaxed">Crispy skin duck breast with a cherry port sauce, served with wild rice pilaf.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="menu-card bg-white rounded-xl shadow-md overflow-hidden border border-blue-100 p-6">
+              <div class="flex items-start gap-4">
+                <div class="overflow-hidden rounded-lg w-24 h-24 flex-shrink-0 bg-blue-100">
+                  <img class="menu-image w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCILXecmhZLfNIQZBu_vuPq1fMdSwYf3n9H_NmE0UizIsjAx_WgZexaTeUEPZ3RyVpZJqmnPtO5k9_ZRqQ5MdGIC7Z7ljAdBKFBDc7_VsYLBZM62GGmd9rB-f3DO2ei0QBgmY7xFvLgiK56lfQqh1W_nbMepHrV1pyoWcvfnxgr6ufVVBjEcklfPH1bBQDkDdlV_CJx5pOny_iOecHPn4WDM7cgWNkXyUngSPMKakt7BPt1HV_sRsMvrevSlgirLjZP5yl77umkiiQ" alt="Sea Bass"/>
+                </div>
+                <div class="flex-1">
+                  <div class="flex items-start justify-between mb-2">
+                    <h3 class="text-lg font-bold text-blue-900">Chilean Sea Bass</h3>
+                    <span class="text-xl font-bold text-blue-600 ml-4">$55</span>
+                  </div>
+                  <p class="text-sm text-gray-600 leading-relaxed">Miso-glazed sea bass, bok choy, and shiitake mushrooms in a light dashi broth.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="menu-card bg-white rounded-xl shadow-md overflow-hidden border border-blue-100 p-6">
+              <div class="flex items-start gap-4">
+                <div class="overflow-hidden rounded-lg w-24 h-24 flex-shrink-0 bg-blue-100">
+                  <img class="menu-image w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB51xmN81Cu2PWKYO-QRgOz1-IJkFbbBgmzqh-89oy_0WeYTExX8URPZ5mBXROlmGkorClS1FMxq5c-7piL3Eh_UuESlKQyNp_H4sWU8pfzo7ffIBkYiJRxSpWKK2a4FzVUKj2b67kDYFKDDbHCGn3jyxI5wUsneGtmxw9f3hIWHwPJ4xp_tnBSGnh-ZCWqRwPX-6yEe24thAgAfVB5b9o7xZPsLiJSYuY6XLPioctZtOXvDqkNJ2rEDQLGquqYbKFRz0vXJndiUFtX" alt="Lobster"/>
+                </div>
+                <div class="flex-1">
+                  <div class="flex items-start justify-between mb-2">
+                    <h3 class="text-lg font-bold text-blue-900">Lobster Thermidor</h3>
+                    <span class="text-xl font-bold text-blue-600 ml-4">$75</span>
+                  </div>
+                  <p class="text-sm text-gray-600 leading-relaxed">A classic dish of creamy lobster meat stuffed back into the shell and browned.</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- Desserts Section -->
+        <section id="desserts">
+          <h2 class="text-3xl font-bold text-blue-900 mb-8 pb-3 border-b-2 border-blue-200">Desserts</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            
+            <div class="menu-card bg-white rounded-xl shadow-md overflow-hidden border border-blue-100 p-6">
+              <div class="flex items-start gap-4">
+                <div class="overflow-hidden rounded-lg w-24 h-24 flex-shrink-0 bg-blue-100">
+                  <img class="menu-image w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDW_A1yE-Pa55Rtldhzq1afbgq-lxIOTj_5vK0Eg39YXoEgJRRX2dmGaH1XQqjnPXzM8Yd966FuYlZeCv7fBCa2qDHXqQuBkhTB_LCAFSeBWxTalLC9Zrqjf4293nJxcler2LBsMAqQZbMkLBf4hSPNH4XT366VpRvR4DLNCaYrSfXiiITva2suR-PmotOi8KtBvip21a1oqsrSIKyIKUNr4y3_1yKVb8rnuvXVmGY6je_X-OH4EBEOx5T65NsAqINqorNVOFU31HPv" alt="Lava Cake"/>
+                </div>
+                <div class="flex-1">
+                  <div class="flex items-start justify-between mb-2">
+                    <h3 class="text-lg font-bold text-blue-900">Chocolate Lava Cake</h3>
+                    <span class="text-xl font-bold text-blue-600 ml-4">$18</span>
+                  </div>
+                  <p class="text-sm text-gray-600 leading-relaxed">Warm, molten chocolate cake with raspberry coulis and vanilla bean ice cream.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="menu-card bg-white rounded-xl shadow-md overflow-hidden border border-blue-100 p-6">
+              <div class="flex items-start gap-4">
+                <div class="overflow-hidden rounded-lg w-24 h-24 flex-shrink-0 bg-blue-100">
+                  <img class="menu-image w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKC6FL8yg90ZyPooNFygC6YnA0iqtHYmyjWRNfY81beP4-aX1a0iaaOQZrDe3Fe1rCBedLuoeYkXh5JhhlrSLD93NETggeDATO72maQTkZ4IwE5CaB1O0rz3egwiwxpgTHC8lDVRfwmoEmGDpAMDS9dzQJBVnRc_5LU6c_JWBUgOu6H99L81CtnxeGjtb9ckTGCWDLwKLlgXH5H9F8IBtrai6gHN_HVkD3PLcgaUvvNAVB21vCZS08tIFMQ0TseG8ZkeyVbbT2flHO" alt="Creme Brulee"/>
+                </div>
+                <div class="flex-1">
+                  <div class="flex items-start justify-between mb-2">
+                    <h3 class="text-lg font-bold text-blue-900">Crème Brûlée Trio</h3>
+                    <span class="text-xl font-bold text-blue-600 ml-4">$20</span>
+                  </div>
+                  <p class="text-sm text-gray-600 leading-relaxed">A tasting of three classic flavors: vanilla, espresso, and lavender.</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="bg-gradient-to-r from-blue-600 to-blue-700 rounded-2xl p-12 text-center shadow-xl">
+          <h2 class="text-3xl font-bold text-white mb-4">Ready to Experience Fine Dining?</h2>
+          <p class="text-blue-100 mb-8 max-w-2xl mx-auto">Reserve your table today and discover culinary excellence at Elysian Table.</p>
+          <a href="res.html" class="inline-flex items-center gap-2 bg-white text-blue-600 px-8 py-4 rounded-full text-lg font-bold hover:bg-blue-50 transition-all shadow-lg hover:shadow-xl hover:scale-105">
+            <span>Book a Table</span>
+            <span class="material-symbols-outlined">arrow_forward</span>
+          </a>
+        </section>
+
+      </div>
+    </main>
+
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const menuBtn = document.getElementById('menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+    });
+  </script>
+</body>
+</html>
