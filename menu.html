@@ -74,39 +74,106 @@
 <body class="bg-white font-display text-gray-900">
   <div class="relative flex min-h-screen w-full flex-col">
     
-    <!-- Header -->
-    <header class="bg-white border-b border-blue-100 px-6 sm:px-10 md:px-20 lg:px-40 py-4 sticky top-0 z-50 backdrop-blur-sm bg-white/95">
-      <div class="flex items-center justify-between">
-        <div class="flex items-center gap-4">
-          <div class="h-6 w-6 text-blue-600">
-            <svg fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path d="M21.71 8.71c1.25-1.25.68-3.71-1.29-4.29-1.33-.39-2.55.3-3.42 1.17l-2.42 2.42-2.83-2.83c-.39-.39-1.02-.39-1.41 0l-1.17 1.17-2.58-2.58c-.99-.99-2.61-.99-3.61 0L1 5.41c-.99.99-.99 2.61 0 3.61l2.58 2.58-1.17 1.17c-.39.39-.39 1.02 0 1.41l2.83 2.83-2.42 2.42c-.87.87-1.56 2.09-1.17 3.42.58 1.97 3.04 2.54 4.29 1.29l10.59-10.59c1.25-1.24 1.25-3.27 0-4.52zM12 15c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3z"></path>
-            </svg>
+    <header class="sticky top-0 z-50 bg-black/30 backdrop-blur-xl border-b border-white/10">
+
+      <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
+    
+        <!-- Logo -->
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full border border-primary/40 bg-primary/10 flex items-center justify-center">
+            <span class="material-symbols-outlined text-primary">
+              restaurant
+            </span>
           </div>
-          <h2 class="text-blue-900 text-xl font-bold leading-tight tracking-[-0.015em]">Elysian Table</h2>
+    
+          <div>
+            <h2 class="text-white font-bold tracking-wide">
+              Elysian Table
+            </h2>
+            <p class="text-[11px] uppercase tracking-[0.25em] text-primary/80">
+              Fine Dining
+            </p>
+          </div>
         </div>
-
-        <div class="flex flex-1 justify-end items-center gap-6">
-          <nav class="hidden md:flex items-center gap-8">
-            <a class="text-blue-900 text-sm font-medium hover:text-blue-600 transition-colors" href="index.html">Home</a>
-            <a class="text-blue-600 text-sm font-bold border-b-2 border-blue-600" href="menu.html">Menu</a>
-            <a class="text-blue-900 text-sm font-medium hover:text-blue-600 transition-colors" href="res.html">Book</a>
-          </nav>
-
-          <button id="menu-btn" class="flex items-center justify-center p-2 md:hidden text-blue-900">
-            <span class="material-symbols-outlined text-3xl">menu</span>
+    
+        <!-- Desktop Nav -->
+        <nav class="hidden md:flex items-center gap-1 bg-white/5 border border-white/10 rounded-full p-1">
+    
+          <a href="index.html"
+             class="px-5 py-2 rounded-full text-white/80 hover:text-white hover:bg-white/10 transition">
+            Home
+          </a>
+    
+          <a href="menu.html"
+             class="px-5 py-2 rounded-full bg-primary text-background-dark text-sm font-bold">
+            Menu
+          </a>
+    
+          <a href="res.html"
+             class="px-5 py-2 rounded-full text-white/80 hover:text-white hover:bg-white/10 transition">
+            Reserve
+          </a>
+    
+        </nav>
+    
+        <!-- Right Side -->
+        <div class="flex items-center gap-3">
+    
+          <a href="res.html"
+             class="hidden lg:flex items-center justify-center px-5 h-11 rounded-full bg-primary text-background-dark font-bold hover:bg-primary/90 transition">
+            Book Table
+          </a>
+    
+          <button id="menu-btn"
+                  class="flex md:hidden items-center gap-2 border border-white/20 rounded-xl px-3 py-2 text-white">
+    
+            <span class="material-symbols-outlined">
+              menu
+            </span>
+    
+            <span class="text-sm">
+              Menu
+            </span>
+    
           </button>
+    
         </div>
+    
       </div>
+    
+      <!-- Mobile Menu -->
+      <div id="mobile-menu"
+           class="hidden absolute left-4 right-4 top-full mt-2 bg-black/95 backdrop-blur-xl rounded-2xl border border-white/10 shadow-2xl p-3">
+    
+        <a href="index.html"
+           class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 text-white">
+          <span class="material-symbols-outlined">home</span>
+          Home
+        </a>
+    
+        <a href="menu.html"
+           class="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary/15 text-primary font-medium">
+          <span class="material-symbols-outlined">restaurant_menu</span>
+          Menu
+        </a>
+    
+        <a href="res.html"
+           class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 text-white">
+          <span class="material-symbols-outlined">event_seat</span>
+          Reserve
+        </a>
+    
+        <a href="res.html"
+           class="flex items-center justify-center mt-2 py-3 rounded-xl bg-primary text-background-dark font-bold">
+          Book Table
+        </a>
+    
+      </div>
+    
     </header>
-
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-blue-100 px-6 py-4 space-y-3">
-      <a href="index.html" class="block text-sm font-medium text-blue-700 hover:text-blue-600">Home</a>
-      <a href="menu.html" class="block text-sm font-bold text-blue-600">Menu</a>
-      <a href="res.html" class="block text-sm font-medium text-blue-900 hover:text-blue-600">Book</a>
-    </div>
-
+    
+    
+  
     <!-- Hero Section -->
     <section class="hero-gradient py-16 px-6 sm:px-10">
       <div class="max-w-6xl mx-auto text-center">
@@ -322,13 +389,21 @@
   </div>
 
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const menuBtn = document.getElementById('menu-btn');
-      const mobileMenu = document.getElementById('mobile-menu');
-      menuBtn.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
-      });
+    const menuBtn = document.getElementById("menu-btn");
+    const mobileMenu = document.getElementById("mobile-menu");
+    
+    menuBtn.addEventListener("click", () => {
+      mobileMenu.classList.toggle("hidden");
     });
-  </script>
+    
+    document.addEventListener("click", (e) => {
+      if (
+        !menuBtn.contains(e.target) &&
+        !mobileMenu.contains(e.target)
+      ) {
+        mobileMenu.classList.add("hidden");
+      }
+    });
+    </script>
 </body>
 </html>
